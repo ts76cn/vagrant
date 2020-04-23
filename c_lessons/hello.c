@@ -15,25 +15,96 @@ char(1文字) %c
     処理;
     return 返り値;
 }
+
+プロトタイプ宣言
 */
 
-float getMax(float a, float b) {
-    if (a >= b) {
-        return a;
-    } else {
-        return b;
-    }
+// float getMax(float a, float b);
+
+// void sayHi(void) { // 引数がない場合void
+//     printf("hi!\n");
+// }
+
+/*
+変数の有効範囲
+*/
+
+
+// void f(void) {
+//     // int a = 0; // 自動変数、ローカル変数 ⇔ グローバル変数
+//     static int a = 0; // 静的変数
+//     a++;
+    // printf("a:%d\n", a);
+// }
+
+void f(long *pa) {
+    *pa += 100;
+    printf("%ld\n", *pa);
 }
 
-void sayHi(void) {
-    printf("hi!\n");
-}
+
+void swap(int *pa, int *pb) {
+    int tmp;
+    tmp = *pa;
+    *pa = *pb;
+    *pb = tmp;
+};
+
 
 int main(void) {
 
-    float result;
-    result = getMax(2.3, 5.2);
-    printf("%f\n", result);
+    // float result;
+    // result = getMax(2.3, 5.2);
+    // // printf("%f\n", result);
+
+    // // sayHi();
+
+    // f();
+    // f();
+    // f();
+    // // printf("[main]a:%d\n", a);
+
+    // int sales[3];
+    // sales[0] = 200;
+    // sales[1] = 400;
+    // sales[2] = 300;
+    // // sales[3] = 300;
+
+    // int sales2[] = {200, 400, 300};
+
+    // printf("%d\n", sales2[2]);
+
+
+/*
+文字列：charの配列（※ 終端は「\0」）
+int i; // 整数の場合
+✗ string s;
+"abc"
+char s[] = {'a','b','c','\0'};
+char s[] = "abc";
+char s[4] = "abc";
+*/
+
+    // char s[] = "abc";
+    // printf("%c\n", s[1]);
+
+
+/*
+ポインタ： アドレスを格納するための変数
+メモリ（記憶領域）
+& : アドレス演算子
+* : 間接演算子
+*/
+
+    // int a; // ポインタ（変数）
+    // a = 10; // ポインタに変数の値を代入
+
+    // int *pa; // aの領域のポインタ（変数）
+    // pa = &a; // aの先頭のアドレス#0001を代入
+    // printf("%d\n", *pa); // ポインタpaのアドレス→#0005にある領域の値→アドレス#0001の値→10の意
+
+    // long a = 1000;
+    // f(&a);
 
     // int x = 10; // %d
     // float y = 5.2; // %f
@@ -100,5 +171,42 @@ int main(void) {
     // } while (n < 10);
 
 
+/*
+ポインタ
+    値渡し それぞれの値を保持できる
+    参照渡し メモリ効率が良い
+*/
+
+    int a = 5;
+    int b = 10;
+    swap(&a, &b);
+    printf("a:%d, b:%d\n", a, b);
+
     return 0;
 }
+
+/*
+三項演算子
+if (条件) {
+    return A;
+} else {
+    return B;
+}
+
+返り値 = (条件) ? A : B;
+*/
+
+// float getMax(float a, float b)
+// {
+// /*
+//     if (a >= b)
+//     {
+//         return a;
+//     }
+//     else
+//     {
+//         return b;
+//     }
+// */
+//     return (a >= b) ? a : b;
+// }
